@@ -10,12 +10,14 @@ import {Router} from "@angular/router";
 })
 export class UsersComponent implements OnInit{
   users: User[];
+  isCardView: boolean;
 
   constructor(private userService: UserService, private router:Router) {
   }
 
   ngOnInit() {
     this.getUsers()
+    this.isCardView = true;
   }
 
   private getUsers() {
@@ -24,6 +26,10 @@ export class UsersComponent implements OnInit{
         this.users = users
       }
     })
+  }
+
+  setView(setView: boolean){
+    this.isCardView = setView;
   }
 
   navigateToCreateUser() {
