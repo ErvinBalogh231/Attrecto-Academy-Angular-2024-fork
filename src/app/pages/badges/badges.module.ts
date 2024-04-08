@@ -7,8 +7,11 @@ import { BadgeCardComponent } from './components/badge-card/badge-card.component
 
 @NgModule({
   declarations: [BadgesComponent, BadgeCardComponent],
+  exports: [
+    BadgesComponent,
+  ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+  ],
 })
 export class BadgesModule { }

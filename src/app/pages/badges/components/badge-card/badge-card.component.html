@@ -1,4 +1,7 @@
 <div class="card flex-row align-items-center box-shadow badge-card pe-1">
+  <button (click)="deleteBadge(badge.id, $event)" class="delete-btn btn btn-warning">
+    x
+  </button>
   <div>
     <img class="badge-card-image" [src]="badge.image" alt="badge-image">
   </div>

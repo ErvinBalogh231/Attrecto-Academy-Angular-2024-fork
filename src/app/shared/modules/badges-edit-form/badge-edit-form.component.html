@@ -1,0 +1,50 @@
+<div class="container my-4">
+  Form
+  <form [formGroup]="badgeCreateForm" class="p-3">
+    <div class="mb-3">
+      <label class="form-label">
+        Name
+        @if(badgeCreateForm | isControlRequired:'name'){
+          <span>*</span>
+        }
+      </label>
+
+      <div>
+        <input class="form-control" formControlName="name" name="name">
+      </div>
+    </div>
+
+      <div class="mb-3">
+        <label class="form-label">
+          Description
+          @if(badgeCreateForm | isControlRequired:'description'){
+            <span>*</span>
+          }
+        </label>
+
+        <div>
+          <input class="form-control" formControlName="description" name="description">
+        </div>
+      </div>
+
+    <div class="mb-3">
+      <label>
+        Image
+        @if(badgeCreateForm | isControlRequired:'image'){
+          <span>*</span>
+        }
+      </label>
+
+      <div>
+        <input class="form-control" formControlName="image" name="image">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <button (click)="saveForm()" class="btn btn-primary" [disabled]="badgeCreateForm.invalid">
+        Save
+      </button>
+
+    </div>
+  </form>
+</div>
