@@ -10,11 +10,16 @@ import { BadgeService } from '../../badges/Services/badge.service';
 })
 export class UserCardComponent {
   @Input() user: User;
-  @Input() badges: Badge[];
+  @Input() badges: Badge[]
   @Output() deleteClicked = new EventEmitter<number>
 
   constructor(private badgeService: BadgeService) {
     this.getBadges()
+  }
+
+  deleteUser(id:number, event:MouseEvent) {
+    event.stopPropagation()
+    this.deleteClicked.emit(id)
   }
 
   getBadges(){
@@ -25,9 +30,22 @@ export class UserCardComponent {
     })
   }
 
-  deleteUser(id:number, event:MouseEvent) {
-    event.stopPropagation()
-
-    this.deleteClicked.emit(id)
+  getUserBadgeIds(): number[] {
+    let ids = [];
+    for (const badge of this.user.badges) {
+      ids.push(badge.id)
+    }
+    return ids;
   }
+
+  getBadgeImage(id:number): string {
+    for (const badge of this.badges) {
+      if (badge.id == id) {
+        return badge.image
+      }
+    }
+    return "";
+  }
+
+  protected readonly alert = alert;
 }

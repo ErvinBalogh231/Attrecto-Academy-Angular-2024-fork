@@ -1,5 +1,4 @@
 <div class="container my-4">
-    Form
     <form [formGroup]="userCrateForm" class="p-3">
         <div class="mb-3">
             <label class="form-label">
@@ -26,6 +25,20 @@
                 <input class="form-control" formControlName="image" name="image">
             </div>
         </div>
+
+      <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
+
+        @for (badge of allAvailableBadges; track badge.id) {
+        <input type="checkbox" class="btn-check" id="{{badge.id}}"
+               [checked]="getIfSelected(badge.id)"
+               (click)="toggleSelectedBadges(badge.id)">
+        <label class="btn btn-outline-primary" for="{{badge.id}}">
+          {{badge.name}}
+        </label>
+        }
+
+      </div>
+
         <div class="mb-3">
             <button (click)="saveForm()" class="btn btn-primary" [disabled]="userCrateForm.invalid">
                 Save
