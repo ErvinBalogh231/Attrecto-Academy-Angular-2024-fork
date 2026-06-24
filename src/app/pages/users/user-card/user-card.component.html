@@ -1,7 +1,19 @@
 <div class="card position-relative">
-    <button (click)="deleteUser(user.id, $event)" class="delete-btn btn btn-warning">
-        X
-    </button>
+
+  <button (click)="deleteUser(user.id, $event)" class="delete-btn btn btn-warning">
+    x
+  </button>
+
+  @if(badges) {
+    <div class="user-badges">
+    @for (badge of badges; track badge.id) {
+      @if (getUserBadgeIds().includes(badge.id)) {
+        <img class="user-badge" (click)="alert(getBadgeImage(badge.id))" [src]="badge.image" alt="badge-image">
+      }
+    }
+    </div>
+  }
+
   <div class="user-image">
     <img class="w-100" [src]="user.image" alt="user-avatar">
   </div>
@@ -9,4 +21,5 @@
   <div class="card-body user-title">
     <h5 class="m-0">{{user.name}}</h5>
   </div>
+
 </div>
