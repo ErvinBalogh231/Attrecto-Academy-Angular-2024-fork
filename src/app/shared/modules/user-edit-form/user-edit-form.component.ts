@@ -22,6 +22,9 @@ export class UserEditFormComponent implements OnInit{
   constructor(private userService: UserService, private badgeService: BadgeService, private router: Router) {
   }
 
+  constructor(private userService: UserService, private router: Router) {
+  }
+
   ngOnInit(): void {
     this.initForm();
     this.getBadges();
@@ -30,7 +33,7 @@ export class UserEditFormComponent implements OnInit{
 
   initForm() {
     this.userCrateForm = new FormGroup({
-      name: new FormControl(this.user ? this.user.name :'', [Validators.required, Validators.minLength(3)],),
+      name: new FormControl(this.user ? this.user.name :'', [Validators.minLength(3)],),
       image: new FormControl(this.user ? this.user.image : '',[Validators.required])
     })
   }

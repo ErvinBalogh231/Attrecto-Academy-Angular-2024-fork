@@ -44,4 +44,19 @@ export class BadgesComponent implements OnInit {
     })
   }
 
+  constructor(private badgeService: BadgeService) {
+  }
+
+  ngOnInit() {
+    this.getBadges()
+  }
+
+
+  getBadges() {
+    this.badgeService.getBadges().subscribe({
+      next: (badges: Badge[]) => {
+        this.badges = badges
+      }
+    })
+  }
 }
